@@ -1,0 +1,56 @@
+% Source: http://tex.stackexchange.com/a/5374/23931
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.7mm}}
+\newcommand{\Hrule}{\rule{\linewidth}{0.5mm}}
+\setlength{\parindent}{0pt}
+\makeatletter% since there's an at-sign (@) in the command name
+\renewcommand{\@maketitle}{%
+  \parindent=0pt% don't indent paragraphs in the title block
+  \centering
+  {\Large \bfseries\textsc{\@title}}
+  \HRule\par%
+  \textit{\@author \hfill \@date}
+  \par
+}
+\makeatother% resets the meaning of the at-sign (@)
+
+\title{Machine-1 EMS}
+\author{Devesh Tarasia}
+\date{19-Jan-2021}
+
+\begin{document}
+  \maketitle% prints the title block
+  \vspace{0.2cm}
+  \textbf{Problem Statement:}\newline
+  To create a program that would be able to monitor the status of machine-1 and be able to detect the type of 
+  fault, the part associate with the fault and possible rectification\newline
+
+  
+  \textbf{Type of Data:}
+  \vspace{-2mm}
+  \begin{itemize}
+    \setlength\itemsep{0em}
+    \item Functional Nodes: The values of these nodes constantly change throughout the operation of the machine 
+    and and can be used as an indicator of progress of the process through the workstation
+    \item State Nodes: The values of these nodes remain unchanged throughout the operation and are an indicator
+    of the 'health' of the machine. If some state tags are wrong, then the machine is not in the right state to
+    operate
+    \begin{itemize}
+      \itemsep0em
+      \item State Nodes common for all components
+      \item State Nodes specific for each component
+    \end{itemize}
+    \item Operational Times: Timestamps of the Functional Nodes when a change of value occurs in the nodes
+  \end{itemize}
+  \textbf{Current Approach:}\newline
+  \textit{Idea:}\newline
+  The idea is to compare the node values at each event change with the correct values. The correct values are stored in a matrix
+  where each row has the values of functional nodes at each change.\newline
+  At each event change, the values of all the functional nodes is checked with corresponding row. The row numbers represent the
+  the event number, which are incremented chronologically.\newline
+  To check the difference between 
+\end{document}
